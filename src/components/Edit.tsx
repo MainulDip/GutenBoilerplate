@@ -3,8 +3,12 @@
  *
  * @see https://developer.wordpress.org/block-editor/packages/packages-i18n/
  */
-import React from 'react'
-import { __ } from '@wordpress/i18n'
+import React from "react";
+import { __ } from "@wordpress/i18n";
+
+import { addFilter, addAction } from "@wordpress/hooks";
+import { useEffect } from "@wordpress/components";
+import { getBlockTypes } from "@wordpress/blocks";
 
 /**
  * React hook that is used to mark the block wrapper element.
@@ -23,14 +27,13 @@ import { __ } from '@wordpress/i18n'
 // 	BlockContextProvider
 // } from '@wordpress/block-editor';
 
-
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
  * Those files can contain any CSS code that gets applied to the editor.
  *
  * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
  */
-import '../editor.scss' 
+import "../editor.scss";
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -40,12 +43,13 @@ import '../editor.scss'
  *
  * @return {WPElement} Element to render.
  */
-export default function Edit ({ attributes, setAttributes }) {
+export default function Edit({ attributes, setAttributes }) {
 	return (
 		<div>
-
-			<p>{__('Scafold-block – hello from the editor!', 'guten-scafold-block')}</p>
-			
+			<p>
+				{/* {console.log(getBlockTypes())} */}
+				{__("Scafold-block – hello from the editor!", "guten-scafold-block")}
+			</p>
 		</div>
-	)
+	);
 }

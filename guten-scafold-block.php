@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Plugin Name:       Scafold-block
  * Description:       Custom scafold block
@@ -20,7 +21,26 @@
  *
  * @see https://developer.wordpress.org/block-editor/tutorials/block-tutorial/writing-your-first-block-type/
  */
-function create_block_guten_scafold_block_block_init() {
-	register_block_type_from_metadata( __DIR__ );
+function create_block_guten_scafold_block_block_init()
+{
+	register_block_type_from_metadata(__DIR__);
 }
-add_action( 'init', 'create_block_guten_scafold_block_block_init' );
+
+
+
+class CustomGutenTsScafold
+{
+	public function __construct()
+	{
+		add_action('init', [$this, 'block_init']);
+	}
+
+
+	public function block_init()
+	{
+		register_block_type_from_metadata(__DIR__);
+	}
+}
+
+
+new CustomGutenTsScafold();
