@@ -1,6 +1,6 @@
 {
 	"apiVersion": 2,
-	"name": "create-block/guten-scafold-block",
+	"name": "wp-mainul-dip/wp-extended-block-ts",
 	"title": "Scafold-block",
 	"category": "text",
 	"icon": "smiley",
@@ -8,7 +8,7 @@
 	"supports": {
 		"html": false
 	},
-	"textdomain": "guten-scafold-block",
+	"textdomain": "wp-extended-block-ts-lg",
 	"editorScript": "file:./build/index.js",
 	"editorStyle": "file:./build/index.css",
 	"style": "file:./build/style-index.css"

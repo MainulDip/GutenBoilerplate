@@ -8,7 +8,10 @@ import { __ } from "@wordpress/i18n";
 
 import { addFilter, addAction } from "@wordpress/hooks";
 import { useEffect } from "@wordpress/components";
-import { getBlockTypes } from "@wordpress/blocks";
+import { getBlockType } from "@wordpress/blocks";
+import { useBlockProps } from "@wordpress/block-editor";
+
+import { txtDomain } from "../index";
 
 /**
  * React hook that is used to mark the block wrapper element.
@@ -45,10 +48,10 @@ import "../editor.scss";
  */
 export default function Edit({ attributes, setAttributes }) {
 	return (
-		<div>
+		<div {...useBlockProps()}>
 			<p>
 				{/* {console.log(getBlockTypes())} */}
-				{__("Scafold-block – hello from the editor!", "guten-scafold-block")}
+				{__("Scafold-block – hello from the editor!", txtDomain)}
 			</p>
 		</div>
 	);
