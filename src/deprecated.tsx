@@ -56,7 +56,7 @@ const blockAttributes = {
 };
 
 const migrateCustomColorsAndFontSizes = (attributes, innerBlocks) => {
-	console.log("innterBlock migration");
+	console.log("Deprecated Migrate Function");
 	console.log(innerBlocks);
 	if (
 		!attributes.customTextColor &&
@@ -91,7 +91,9 @@ const migrateCustomColorsAndFontSizes = (attributes, innerBlocks) => {
 
 const deprecated = [
 	{
-		// supports,
+		supports: {
+			className: true,
+		},
 		attributes: {
 			align: {
 				type: "string",
@@ -115,78 +117,26 @@ const deprecated = [
 				enum: ["ltr", "rtl"],
 			},
 		},
-		migrate: migrateCustomColorsAndFontSizes,
-		save({ attributes }) {
-			console.log("Save Function Value Deprecated");
+		migrate: () => {
+			console.log("Migrate Function");
+		},
+		save: ({ attributes }) => {
+			console.log("Deprecated Save Function");
+
 			console.log(attributes);
-
-			// const { align, content, dropCap, direction } = attributes;
-			// const className = classnames({
-			// 	"has-drop-cap": dropCap,
-			// 	[`has-text-align-${align}`]: align,
-			// });
-			// const {
-			// 	align,
-			// 	content,
-			// 	dropCap,
-			// 	backgroundColor,
-			// 	textColor,
-			// 	customBackgroundColor,
-			// 	customTextColor,
-			// 	fontSize,
-			// 	customFontSize,
-			// 	direction,
-			// } = attributes;
-
-			// const textClass = getColorClassName("color", textColor);
-			// const backgroundClass = getColorClassName(
-			// 	"background-color",
-			// 	backgroundColor
-			// );
-			// const fontSizeClass = getFontSizeClass(fontSize);
-
-			// const className = classnames({
-			// 	"has-text-color": textColor || customTextColor,
-			// 	"has-background": backgroundColor || customBackgroundColor,
-			// 	"has-drop-cap": dropCap,
-			// 	[`has-text-align-${align}`]: align,
-			// 	[fontSizeClass]: fontSizeClass,
-			// 	[textClass]: textClass,
-			// 	[backgroundClass]: backgroundClass,
-			// });
-
-			// const styles = {
-			// 	backgroundColor: backgroundClass ? undefined : customBackgroundColor,
-			// 	color: textClass ? undefined : customTextColor,
-			// 	fontSize: fontSizeClass ? undefined : customFontSize,
-			// };
-
 			const { align, content, dropCap, direction } = attributes;
 			const className = classnames({
 				"has-drop-cap": dropCap,
 				[`has-text-align-${align}`]: align,
 			});
-			console.log(
-				omit({ ...useBlockProps.save({ className, dir: direction }) }, [
-					attributes.mobileHidden,
-				])
-			);
+
 			return (
-				// <RichText.Content
-				// 	tagName="p"
-				// 	style={styles}
-				// 	className={className ? className : undefined}
-				// 	value={content}
-				// 	dir={direction}
-				// />
-				<p
-					{...omit({ ...useBlockProps.save({ className, dir: direction }) }, [
-						attributes.mobileHidden,
-					])}
-				>
-					<RichText.Content value={content} />
-				</p>
-				// <p>{attributes.content}</p>
+				<RichText.Content
+					tagName="p"
+					className={className ? className : undefined}
+					value={content}
+					dir={direction}
+				/>
 			);
 		},
 	},
@@ -206,6 +156,7 @@ const deprecated = [
 		},
 		migrate: migrateCustomColorsAndFontSizes,
 		save({ attributes }) {
+			console.log("Deprecated Save Function 2");
 			const {
 				align,
 				content,
@@ -269,6 +220,7 @@ const deprecated = [
 		},
 		migrate: migrateCustomColorsAndFontSizes,
 		save({ attributes }) {
+			console.log("Deprecated Save Function 3");
 			const {
 				align,
 				content,
@@ -335,6 +287,7 @@ const deprecated = [
 		},
 		migrate: migrateCustomColorsAndFontSizes,
 		save({ attributes }) {
+			console.log("Deprecated Save Function 4");
 			const {
 				width,
 				align,
@@ -393,6 +346,7 @@ const deprecated = [
 			["style"]
 		),
 		save({ attributes }) {
+			console.log("Deprecated Save Function 5");
 			const {
 				width,
 				align,
@@ -451,6 +405,7 @@ const deprecated = [
 			},
 		},
 		save({ attributes }) {
+			console.log("Deprecated Save Function 6");
 			return <RawHTML>{attributes.content}</RawHTML>;
 		},
 		migrate(attributes) {
